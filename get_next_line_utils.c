@@ -12,9 +12,9 @@
 
 #include "get_next_line.h"
 
-int ft_strlen(const char *str)
+int	ft_strlen(const char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -24,9 +24,9 @@ int ft_strlen(const char *str)
 	return (i);
 }
 
-int finder(const char *str)
+int	finder(const char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!str)
@@ -44,11 +44,11 @@ int finder(const char *str)
 	return (0);
 }
 
-char *strjoin(char *line, char *buffer)
+char	*strjoin(char *line, char *buffer)
 {
-	size_t i;
-	size_t j;
-	char *result;
+	size_t	i;
+	size_t	j;
+	char	*result;
 
 	if (!line)
 	{
@@ -72,10 +72,10 @@ char *strjoin(char *line, char *buffer)
 	return (result);
 }
 
-char *getbefore(char *str)
+char	*getbefore(char *str)
 {
-	char *res;
-	int i;
+	char	*res;
+	int		i;
 
 	i = 0;
 	if (!str[i])
@@ -100,11 +100,11 @@ char *getbefore(char *str)
 	return (res);
 }
 
-char *getafter(char *str)
+char	*getafter(char *str)
 {
-	char *res;
-	int i;
-	int j;
+	char	*res;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = 0;

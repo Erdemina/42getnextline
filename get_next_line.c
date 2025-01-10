@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include	"get_next_line.h"
 
-char *read_line(int fd, char *left)
+char	*read_line(int fd, char *left)
 {
-	char *buffer;
-	int r_bytes;
+	char	*buffer;
+	int		r_bytes;
 
 	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
@@ -37,10 +37,10 @@ char *read_line(int fd, char *left)
 	return (left);
 }
 
-char *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
-	char *line;
-	static char *left;
+	char		*line;
+	static char	*left;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
