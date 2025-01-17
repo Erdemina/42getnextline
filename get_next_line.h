@@ -13,28 +13,19 @@
 #ifndef GET_NEXT_LINE_H
 #define GET_NEXT_LINE_H
 
+#include <unistd.h>
+#include <stdlib.h>
+
 #ifndef BUFFER_SIZE
-#define BUFFER_SIZE 10
+#define BUFFER_SIZE 1
 #endif
 
-#include <fcntl.h>
-#include <stdlib.h>
-#include <stdio.h>
-
-typedef struct s_list
-{
-	char *str_buf;
-	struct s_list *next;
-} t_list;
-
-int found_newline(t_list *list);
-t_list *find_last_node(t_list *list);
-char *get_line(t_list *list);
-void copy_str(t_list *list, char *str);
-int len_to_newline(t_list *list);
-void polish_list(t_list **list);
+char *ft_strchr(char *str, int c);
+int ft_strlen(char *s);
+void str_part_cpy(char *s1, char *s2, int srci, int len);
+char *join(char *s1, char *s2);
+char *get_line_from_buffer(char *buffer);
 char *get_next_line(int fd);
-void dealloc(t_list **list, t_list *clean_node, char *buf);
-void create_list(t_list **list, int fd);
+char *clean_buffer(char *buffer);
 
 #endif

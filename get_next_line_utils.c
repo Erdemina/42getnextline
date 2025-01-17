@@ -12,108 +12,62 @@
 
 #include "get_next_line.h"
 
-int found_newline(t_list *list)
+int ft_strlen(char *s)
 {
 	int i;
 
-	if (NULL == list)
+	i = 0;
+	if (!s)
 		return (0);
-	while (list)
+	while (s[i])
+		i++;
+	return (i);
+}
+
+char *join(char *s1, char *s2)
+{
+	char *dst;
+	int i;
+	int j;
+
+	if (!s1)
 	{
-		i = 0;
-		while (list->str_buf[i] && i < BUFFER_SIZE)
-		{
-			if (list->str_buf[i] == '\n')
-				return (1);
-			++i;
-		}
-		list = list->next;
+		s1 = malloc(sizeof(char) * 1);
+		s1[0] = '\0';
+	}
+	dst = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (!dst)
+		return (0);
+	i = -1;
+	while (s1[++i])
+		dst[i] = s1[i];
+	j = -1;
+	while (s2[++j])
+		dst[i + j] = s2[j];
+	dst[i + j] = 0;
+	free(s1);
+	return (dst);
+}
+
+char *ft_strchr(char *str, int c)
+{
+	int i;
+	unsigned char ch;
+
+	i = 0;
+	ch = c;
+	if (!str)
+		return (NULL);
+	if (ch == '\0')
+	{
+		i = ft_strlen(str);
+		return ((char *)str + i);
+	}
+	while (str[i])
+	{
+		if (str[i] == ch)
+			return ((char *)str + i);
+		i++;
 	}
 	return (0);
-}
-
-t_list *find_last_node(t_list *list)
-{
-	if (NULL == list)
-		return (NULL);
-	while (list->next)
-		list = list->next;
-	return (list);
-}
-
-
-void copy_str(t_list *list, char *str)
-{
-	int i;
-	int k;
-
-	if (NULL == list)
-		return;
-	k = 0;
-	while (list)
-	{
-		i = 0;
-		while (list->str_buf[i])
-		{
-			if (list->str_buf[i] == '\n')
-			{
-				str[k++] = '\n';
-				str[k] = '\0';
-				return;
-			}
-			str[k++] = list->str_buf[i++];
-		}
-		list = list->next;
-	}
-	str[k] = '\0';
-}
-
-
-int len_to_newline(t_list *list)
-{
-	int i;
-	int len;
-
-	if (NULL == list)
-		return (0);
-	len = 0;
-	while (list)
-	{
-		i = 0;
-		while (list->str_buf[i])
-		{
-			if (list->str_buf[i] == '\n')
-			{
-				++len;
-				return (len);
-			}
-			++i;
-			++len;
-		}
-		list = list->next;
-	}
-	return (len);
-}
-
-void dealloc(t_list **list, t_list *clean_node, char *buf)
-{
-	t_list *tmp;
-
-	if (NULL == *list)
-		return;
-	while (*list)
-	{
-		tmp = (*list)->next;
-		free((*list)->str_buf);
-		free(*list);
-		*list = tmp;
-	}
-	*list = NULL;
-	if (clean_node->str_buf[0])
-		*list = clean_node;
-	else
-	{
-		free(buf);
-		free(clean_node);
-	}
 }
