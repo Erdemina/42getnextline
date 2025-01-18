@@ -63,7 +63,7 @@ char *get_line_from_buffer(char *buffer)
 	}
 	if (buffer[i] == '\n')
 		line[i++] = '\n';
-	line[i] = 0;
+	line[i] = '\0';
 	return (line);
 }
 
