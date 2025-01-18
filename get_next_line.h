@@ -22,7 +22,6 @@
 
 char *ft_strchr(char *str, int c);
 int ft_strlen(char *s);
-void str_part_cpy(char *s1, char *s2, int srci, int len);
 char *join(char *s1, char *s2);
 char *get_line_from_buffer(char *buffer);
 char *get_next_line(int fd);
