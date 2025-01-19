@@ -33,8 +33,8 @@ char *read_line(char *buffer, int fd)
 		read_len = read(fd, hold_line, BUFFER_SIZE);
 		if (read_len == -1)
 			return (return_free(buffer, hold_line));
-		hold_line[read_len] = 0;
-		buffer = join(buffer, hold_line);
+		hold_line[read_len] = '\0';
+		buffer = ft_join(buffer, hold_line);
 	}
 	free(hold_line);
 	return (buffer);
@@ -74,6 +74,7 @@ char *clean_buffer(char *buffer)
 	int a;
 
 	i = 0;
+	a = 0;
 	while (buffer[i] != '\0' && buffer[i] != '\n')
 		i++;
 	if (!buffer[i])
@@ -83,13 +84,13 @@ char *clean_buffer(char *buffer)
 	}
 	if (buffer[i] == '\n')
 		i++;
-	a = 0;
+	
 	new_buffer = malloc(sizeof(char) * (ft_strlen(buffer) - i + 1));
 	if (!new_buffer)
 		return (NULL);
-	while (buffer[i])
+	while (buffer[i] != '\0')
 		new_buffer[a++] = buffer[i++];
-	new_buffer[a] = 0;
+	new_buffer[a] = '\0';
 	free(buffer);
 	return (new_buffer);
 }

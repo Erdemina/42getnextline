@@ -22,7 +22,7 @@
 
 char *ft_strchr(char *str, int c);
 int ft_strlen(char *s);
-char *join(char *s1, char *s2);
+char *ft_join(char *s1, char *s2);
 char *get_line_from_buffer(char *buffer);
 char *get_next_line(int fd);
 char *clean_buffer(char *buffer);
