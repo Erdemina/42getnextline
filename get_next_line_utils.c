@@ -6,15 +6,15 @@
 /*   By: eulutas <eulutas@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:50:54 by eulutas           #+#    #+#             */
-/*   Updated: 2025/01/10 15:50:54 by eulutas          ###   ########.fr       */
+/*   Updated: 2025/01/19 17:40:52 by eulutas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int ft_strlen(char *s)
+int	ft_strlen(char *s)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!s)
@@ -24,11 +24,11 @@ int ft_strlen(char *s)
 	return (i);
 }
 
-char *ft_join(char *s1, char *s2)
+char	*ft_join(char *s1, char *s2)
 {
-	char *dst;
-	int i;
-	int j;
+	char	*dst;
+	int		i;
+	int		j;
 
 	if (!s1)
 	{
@@ -49,10 +49,10 @@ char *ft_join(char *s1, char *s2)
 	return (dst);
 }
 
-char *ft_strchr(char *str, int c)
+char	*ft_strchr(char *str, int c)
 {
-	int i;
-	unsigned char ch;
+	char	ch;
+	int		i;
 
 	i = 0;
 	ch = c;

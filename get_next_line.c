@@ -6,23 +6,23 @@
 /*   By: eulutas <eulutas@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:49:31 by eulutas           #+#    #+#             */
-/*   Updated: 2025/01/10 15:49:31 by eulutas          ###   ########.fr       */
+/*   Updated: 2025/01/19 17:37:23 by eulutas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char *return_free(char *buffer, char *hold_line)
+char	*return_free(char *buffer, char *hold_line)
 {
 	free(buffer);
 	free(hold_line);
 	return (0);
 }
 
-char *read_line(char *buffer, int fd)
+char	*read_line(char *buffer, int fd)
 {
-	int read_len;
-	char *hold_line;
+	int		read_len;
+	char	*hold_line;
 
 	hold_line = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!hold_line)
@@ -40,10 +40,10 @@ char *read_line(char *buffer, int fd)
 	return (buffer);
 }
 
-char *get_line_from_buffer(char *buffer)
+char	*get_line_from_buffer(char *buffer)
 {
-	char *line;
-	int i;
+	char	*line;
+	int		i;
 
 	i = 0;
 	if (!buffer[i])
@@ -67,11 +67,11 @@ char *get_line_from_buffer(char *buffer)
 	return (line);
 }
 
-char *clean_buffer(char *buffer)
+char	*clean_buffer(char *buffer)
 {
-	char *new_buffer;
-	int i;
-	int a;
+	char	*new_buffer;
+	int		i;
+	int		a;
 
 	i = 0;
 	a = 0;
@@ -84,7 +84,6 @@ char *clean_buffer(char *buffer)
 	}
 	if (buffer[i] == '\n')
 		i++;
-	
 	new_buffer = malloc(sizeof(char) * (ft_strlen(buffer) - i + 1));
 	if (!new_buffer)
 		return (NULL);
@@ -95,10 +94,10 @@ char *clean_buffer(char *buffer)
 	return (new_buffer);
 }
 
-char *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
-	static char *buffer;
-	char *line;
+	static char	*buffer;
+	char		*line;
 
 	if (BUFFER_SIZE <= 0 || fd < 0)
 		return (NULL);
